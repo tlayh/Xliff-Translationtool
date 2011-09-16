@@ -1,0 +1,20 @@
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:render partial="ExtensionType" arguments="{options: options, selectedValueExtensionType: selectedValueExtensionType}" />
+
+	<f:render partial="Extension" arguments="{extensions: extensions, selectedValueExtensionType: selectedValueExtensionType, selectedValueExtension: selectedValueExtension}" />
+
+	<h3>{extensionName}</h3>
+	<section id="extension-file-selection">
+		<f:form action="fileSelection" controller="Index" name="fileSelection">
+			<f:form.select name="file" value="{selectedFile}" options="{files}" optionValueField="filePath" optionLabelField="filePath" />
+			<f:form.hidden name="extensionType" value="{selectedValueExtensionType}" />
+			<f:form.hidden name="extension" value="{selectedValueExtension}" />
+			<f:form.submit value="Submit"/>
+		</f:form>
+	</section>
+
+</f:section>

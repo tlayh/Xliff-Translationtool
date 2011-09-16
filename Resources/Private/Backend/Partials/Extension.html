@@ -1,0 +1,9 @@
+<h2>Extensions with xliff files</h2>
+
+<section id="extension-selection">
+	<f:form action="extensionFiles" controller="Index" name="extensionSelection">
+		<f:form.select name="extension" value="{selectedValueExtension}" options="{extensions}" optionValueField="extensionName" optionLabelField="labelField" />
+		<f:form.hidden name="extensionType" value="{selectedValueExtensionType}" />
+		<f:form.submit value="Submit"/>
+	</f:form>
+</section>

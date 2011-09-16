@@ -1,0 +1,71 @@
+/** general styles **/
+
+/** layout **/
+
+div#xliff-translationtool {
+	padding: 5px;
+}
+
+/** select boxes, submit button **/
+
+
+/** define translation table **/
+
+table {
+	width: 100%;
+}
+
+thead tr {
+	background-color: #585858;
+	color: #FFF;
+	height: 20px;
+}
+
+thead td {
+	font-weight: bold;
+	font-size: 14px;
+	padding-top: 3px;
+	padding-left: 3px;
+}
+
+thead td.translation-key {
+	width: 15%;
+}
+
+thead td.translation-source {
+	width: 42%;
+}
+
+thead td.translation-target {
+	width: 42%;
+}
+
+tbody td {
+	height: 15px;
+	padding-top: 2px;
+	padding-left: 2px;
+}
+
+tbody td.translation-key {
+	width: 15%;
+}
+
+tbody td.translation-source {
+	width: 42%;
+}
+
+tbody td.translation-target {
+	width: 42%;
+}
+
+tbody td.translation-target input {
+	width: 100%;
+}
+
+tbody tr.gray {
+	background-color: #DDDDDD;
+}
+
+tbody tr.lightgray {
+	background-color: #E8E8E8;
+}

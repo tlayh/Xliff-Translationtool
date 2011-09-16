@@ -1,0 +1,25 @@
+# Module configuration
+
+module.tx_xlifftranslationtool {
+	view {
+		templateRootPath = {$module.tx_xlifftranslationtool.view.templateRootPath}
+		partialRootPath = {$module.tx_xlifftranslationtool.view.partialRootPath}
+		layoutRootPath = {$module.tx_xlifftranslationtool.view.layoutRootPath}
+		templateRootPathXliff = {$module.tx_xlifftranslationtool.view.templateRootPathXliff}
+	}
+
+}
+
+module.tx_xlifftranslationtool {
+	persistence {
+		storagePid = {$module.tx_xlifftranslationtool.persistence.storagePid}
+		classes {
+			Tx_XliffTranslationtool_Domain_Model_Languages {
+				mapping {
+					tableName = static_languages
+					recordType = Tx_XliffTranslationtool_Domain_Model_Languages
+				}
+			}
+		}
+	}
+}

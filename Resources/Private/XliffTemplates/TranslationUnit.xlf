@@ -1,0 +1,4 @@
+<trans-unit id="{translationKey}" approved="yes">
+	<source>{translationSource}</source>
+	<target>{translationTarget}</target>
+</trans-unit>

@@ -1,0 +1,53 @@
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:render partial="ExtensionType" arguments="{options: options, selectedValueExtensionType: selectedValueExtensionType}" />
+
+	<f:render partial="Extension" arguments="{extensions: extensions, selectedValueExtensionType: selectedValueExtensionType, selectedValueExtension: selectedValueExtension}" />
+
+	<f:render partial="File" arguments="{extensions: extensions, selectedValueExtensionType: selectedValueExtensionType, selectedValueExtension: selectedValueExtension, extensionName: extensionName, files: files, selectedFile: selectedFile}" />
+
+	<f:render partial="Languages" arguments="{extensions: extensions, selectedValueExtensionType: selectedValueExtensionType, selectedValueExtension: selectedValueExtension, extensionName: extensionName, files: files, selectedFile: selectedFile, languages: languages, selectedLanguage: selectedLanguage}" />
+
+	<h2>{selectedLanguage}</h2>
+
+	<f:form action="saveTranslation" method="post" name="translationData">
+		<f:form.hidden name="selectedValueExtensionType" value="{selectedValueExtensionType}" />
+		<f:form.hidden name="selectedValueExtension" value="{selectedValueExtension}" />
+		<f:form.hidden name="selectedFile" value="{selectedFile}" />
+		<f:form.hidden name="selectedLanguage" value="{selectedLanguage}" />
+
+		<table>
+			<thead>
+				<tr>
+					<td class="translation-key">Translation key</td>
+					<td class="translation-source">Source</td>
+					<td class="translation-target">Target</td>
+				</tr>
+			</thead>
+			<tbody>
+				<f:for each="{fileData.default}" key="transKey" as="transData">
+					<f:cycle values="{0: 'gray', 1: 'lightgray'}" as="cycleClass">
+					<tr class="{cycleClass}">
+						<td class="translation-key">
+							{transKey}
+						</td>
+						<td class="translation-source">
+							<f:form.hidden name="translationData[{transKey}][source]" value="{transData.0.source}" />
+							{transData.0.source}
+						</td>
+						<td class="translation-target">
+							<f:form.textfield name="translationData[{transKey}][target]" value="{transData.0.target}" />
+						</td>
+					</tr>
+					</f:cycle>
+				</f:for>
+			</tbody>
+		</table>
+		<f:form.submit value="Save" />
+	</f:form>
+
+
+</f:section>

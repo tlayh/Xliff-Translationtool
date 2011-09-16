@@ -1,0 +1,11 @@
+<h2>Select language</h2>
+
+<section id="language-selection">
+	<f:form action="languageSelection" controller="Index" name="languageSelection">
+		<f:form.select name="language" value="{selectedLanguage}" options="{languages}" optionValueField="lgTypo3" optionLabelField="lgNameEn" />
+		<f:form.hidden name="extensionType" value="{selectedValueExtensionType}" />
+		<f:form.hidden name="extension" value="{selectedValueExtension}" />
+		<f:form.hidden name="file" value="{selectedFile}" />
+		<f:form.submit value="Submit"/>
+	</f:form>
+</section>
