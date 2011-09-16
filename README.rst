@@ -2,9 +2,8 @@
 XLIFF Translation tool
 ========================
 
-:author:
+:Author:
 	Thomas Layh <develop@layh.com>
-
 	http://www.layh.com
 
 Description:
