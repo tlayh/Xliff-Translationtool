@@ -6,10 +6,14 @@ XLIFF Translation tool
 	Thomas Layh <develop@layh.com>
 	http://www.layh.com
 
+
 Description:
 ---------------
+
 XLIFF Translation tool is designed to have an easy way to translate some labels.
 
-Upcoming Features:
+
+Changelog:
 --------------------
-Possibility to define the extensions that can be translated.
+16.09.2011 -  added configuration option hiddenExtensions
+16.09.2011 - initial commit of first running version

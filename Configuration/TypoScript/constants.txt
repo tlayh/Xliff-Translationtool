@@ -13,4 +13,8 @@ module.tx_xlifftranslationtool {
 		# cat=module.tx_xlifftranslationtool//a; type=int+; label=Default storage PID
 		storagePid =
 	}
+
+	settings {
+		hideExtensions = viewpage, cms, css_styled_content
+	}
 }

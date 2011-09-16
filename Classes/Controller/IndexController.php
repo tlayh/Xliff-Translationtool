@@ -207,9 +207,9 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 		// only do the recursive search if we just selected the extension type
 		if($currentActionName == 'selectGlobalOrLocalExtensionsAction') {
-			/** @var $directoryFunctions Tx_xliffTranslationtool_Lib_DirectoryFunctions */
+			/** @var $directoryFunctions Tx_xliffTranslationtool_Utility_DirectoryFunctions */
 			$directoryFunctions = $this->objectManager->create('Tx_xliffTranslationtool_Utility_DirectoryFunctions');
-			$extensions = $directoryFunctions->findExtensions(intval($extensionType));
+			$extensions = $directoryFunctions->findExtensions(intval($extensionType), $this->settings['hideExtensions']);
 			// save data to session
 			$GLOBALS['BE_USER']->setAndSaveSessionData('xlifftranslationtool', $extensions);
 		} else {

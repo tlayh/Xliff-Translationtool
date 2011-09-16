@@ -29,12 +29,26 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	 * @return array
 	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function findExtensions($extensionType) {
+	public function findExtensions($extensionType, $hiddenExtensions) {
 		$this->setRootPath($extensionType);
 
 		// find extension with xliff files (revursive)
 		$extensions = $this->recursiveDirectorySearch($this->rootPath, $extensions);
 		$extensions = $this->cleanUpResultArray($extensions);
+
+		// check for hidden extensions
+		//t3lib_utility_Debug::debug($extensions);
+		$cleanedExtensions = new ArrayObject();
+		if($hiddenExtensions && strlen($hiddenExtensions) > 0) {
+
+			foreach($extensions as $ext) {
+				// if extension found in $hiddenExtensions string, add it to extensions allowed to translate
+				if(stristr($hiddenExtensions, $ext->getExtensionName()) === FALSE) {
+					$cleanedExtensions->append($ext);
+				}
+			}
+			return $cleanedExtensions;
+		}
 
 		return $extensions;
 	}

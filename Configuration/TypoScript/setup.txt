@@ -1,5 +1,11 @@
 # Module configuration
 
+# set default config to remove a couple of extensions
+module.tx_xlifftranslationtool.settings {
+	hideExtensions = {$module.tx_xlifftranslationtool.settings.hideExtensions}
+}
+
+# set template pathes
 module.tx_xlifftranslationtool {
 	view {
 		templateRootPath = {$module.tx_xlifftranslationtool.view.templateRootPath}
@@ -10,6 +16,7 @@ module.tx_xlifftranslationtool {
 
 }
 
+# map languages model to the TYPO3 language table
 module.tx_xlifftranslationtool {
 	persistence {
 		storagePid = {$module.tx_xlifftranslationtool.persistence.storagePid}
