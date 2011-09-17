@@ -21,5 +21,7 @@ Hide extensions that you don't want to show up in the list (constants)::
 
 Changelog:
 --------------------
+
 16.09.2011 -  added configuration option hiddenExtensions
+
 16.09.2011 - initial commit of first running version
