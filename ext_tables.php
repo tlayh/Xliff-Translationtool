@@ -16,7 +16,7 @@ if (TYPO3_MODE === 'BE') {
 		'translation',	// Submodule key
 		'',						// Position
 		array(
-			'Index' => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation'
+			'Index' => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation,help'
 		),
 		array(
 			'access' => 'user,group',

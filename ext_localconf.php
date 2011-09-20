@@ -8,7 +8,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	'mod1',
 	// cachable actions
 	array(
-		'Index' => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation',
+		'Index' => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation,help',
 	),
 	// non-cacheable actions
 	array(

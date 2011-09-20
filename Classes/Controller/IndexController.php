@@ -272,6 +272,15 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		return $languages;
 	}
 
+	/**
+	 * help action
+	 *
+	 * @return void
+	 */
+	public function helpAction() {
+
+	}
+
 }
 
 ?>
