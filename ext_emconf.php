@@ -13,7 +13,7 @@
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'XLIFF Translation Tool',
 	'description' => 'Backendmodul to add translations for xliff',
-	'category' => 'plugin',
+	'category' => 'module',
 	'author' => 'Thomas Layh',
 	'author_email' => 'develop@layh.com',
 	'author_company' => '',
@@ -27,7 +27,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.1',
+	'version' => '0.1.dev',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '4.6.0-0.0.0',
