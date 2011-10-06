@@ -16,5 +16,6 @@ module.tx_xlifftranslationtool {
 
 	settings {
 		hideExtensions = viewpage, cms, css_styled_content
+		displayLanguages = de, en, gb, us, fr
 	}
 }

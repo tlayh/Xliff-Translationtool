@@ -3,6 +3,7 @@
 # set default config to remove a couple of extensions
 module.tx_xlifftranslationtool.settings {
 	hideExtensions = {$module.tx_xlifftranslationtool.settings.hideExtensions}
+	displayLanguages = {$module.tx_xlifftranslationtool.settings.displayLanguages}
 }
 
 # set template pathes
