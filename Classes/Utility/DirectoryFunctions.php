@@ -16,6 +16,11 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	protected $objectManager;
 
 	/**
+	 * @var string
+	 */
+	protected $rootPath;
+
+	/**
 	 * default constructor
 	 */
 	public function __construct() {
@@ -26,6 +31,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	 * Find either global or local extensions depending on the selected extension type
 	 *
 	 * @param integer $extensionType
+	 * @param string $hiddenExtensions
 	 * @return array
 	 * @author Thomas Layh <develop@layh.com>
 	 */
@@ -41,6 +47,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 		$cleanedExtensions = new ArrayObject();
 		if($hiddenExtensions && strlen($hiddenExtensions) > 0) {
 
+				/** @var Tx_XliffTranslationtool_Domain_Model_Extension $ext */
 			foreach($extensions as $ext) {
 				// if extension found in $hiddenExtensions string, add it to extensions allowed to translate
 				if(stristr($hiddenExtensions, $ext->getExtensionName()) === FALSE) {
@@ -69,6 +76,9 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	private function cleanUpResultArray($files) {
 		$cleanResult = new ArrayObject();
 
+		/** @var $extension Tx_xliffTranslationtool_Domain_Model_Extension */
+		$extension = NULL;
+
 		foreach($files as $key => $file) {
 
 			$keyParts = explode('/', $key);
@@ -76,6 +86,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 
 			// check if extension already exists in cleanResult
 			$found = FALSE;
+			/** @var  $cR Tx_xliffTranslationtool_Domain_Model_Extension */
 			foreach($cleanResult as $cR) {
 				if($cR->getExtensionName() == $extKey) {
 					$found = TRUE;
@@ -85,7 +96,6 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 
 				// if the extension does not yet exist, create a new model for the extension
 			if(!$found) {
-				/** @var $extension Tx_xliffTranslationtool_Domain_Model_Extension */
 				$extension = $this->objectManager->create('Tx_XliffTranslationtool_Domain_Model_Extension');
 			}
 
@@ -99,7 +109,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 
 			$extension->setExtensionName($extKey);
 			foreach($file as $f) {
-				/** @var $extension Tx_xliffTranslationtool_Domain_Model_File */
+				/* @var $fileObject Tx_xliffTranslationtool_Domain_Model_File */
 				$fileObject = $this->objectManager->create('Tx_XliffTranslationtool_Domain_Model_File');
 				$fileObject->setFileName($f);
 				$fileObject->setFilePath($tempPath.$f);
@@ -116,7 +126,8 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	/**
 	 * recursive search through the directories
 	 *
-	 * @param $dir
+	 * @param string $dir
+	 * @param array $files
 	 * @return array
 	 * @author Thomas Layh <develop@layh.com>
 	 */

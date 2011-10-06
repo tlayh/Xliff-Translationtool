@@ -41,7 +41,7 @@ class Tx_XliffTranslationtool_Domain_Repository_LanguagesRepository extends Tx_E
 	 * find only selected languages
 	 *
 	 * @param array $selectedLanguages
-	 * @return void
+	 * @return Tx_Extbase_Persistence_QueryInterface
 	 */
 	public function findBySelectedLanguages($selectedLanguages) {
 		$query = $this->createQuery();

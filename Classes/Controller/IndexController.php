@@ -89,12 +89,11 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 		$this->setExtensions($extensionType);
 
-		$directoryFunctions = $this->objectManager->create('Tx_xliffTranslationtool_Utility_DirectoryFunctions');
-
 		// get extensions from session
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
 		// get selected extension from extensions from session
+		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
 				$extension = $ext;
@@ -121,12 +120,11 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 		$this->setExtensions($extensionType);
 
-		$directoryFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_DirectoryFunctions');
-
 		// get extensions from session
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
 		// get selected extension from extensions from session
+		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
 				$extension = $ext;
@@ -161,9 +159,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		$selectedLanguage = $this->request->getArgument('language');
 		$this->view->assign('selectedLanguage', $selectedLanguage);
 
-		/** @var $directoryFunctions Tx_XliffTranslationtool_Utility_DirectoryFunctions */
-		$directoryFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_DirectoryFunctions');
-
 		/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
 		$xliffFileFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_XliffFileFunctions');
 
@@ -171,6 +166,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
 		// get selected extension from extensions from session
+		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
 				$extension = $ext;
@@ -237,7 +233,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 		/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
 		$xliffFileFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_XliffFileFunctions');
-		if($xliffFileFunctions->generateXliff($extensionType, $selectedExtension, $language, $file, $extensionType, $translationData, $this->configurationManager)) {
+		if($xliffFileFunctions->generateXliff($selectedExtension, $language, $file, $translationData, $this->configurationManager)) {
 			$this->flashMessageContainer->add('Translated file saved!!');
 		} else {
 			$this->flashMessageContainer->add('Error saving file!!');

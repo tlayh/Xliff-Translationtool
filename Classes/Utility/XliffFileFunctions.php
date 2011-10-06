@@ -91,7 +91,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	/**
 	 * @param string $data
 	 * @param string $completePathToFile
-	 * @return void
+	 * @return int
 	 */
 	private function setFileContents($data, $completePathToFile) {
 		return file_put_contents($completePathToFile, $data);
@@ -101,11 +101,11 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	 * @param string $selectedExtension
 	 * @param string $language
 	 * @param string $file
-	 * @param string $extensionType
+	 * @param $configurationManager
 	 * @param array $translationData
-	 * @return void
+	 * @return int
 	 */
-	public function generateXliff($extensionType, $selectedExtension, $language, $file, $extensionType, $translationData, $configurationManager) {
+	public function generateXliff($selectedExtension, $language, $file, $translationData, $configurationManager) {
 
 			// get xliff view header
 		$xliffViewHeader = $this->getXliffRenderer($configurationManager, 'Header');
@@ -144,6 +144,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	 */
 	private function getXliffRenderer($configurationManager, $templateName) {
 
+		/** @var $xliffView Tx_Fluid_View_StandaloneView */
 		$xliffView = $this->objectManager->create('Tx_Fluid_View_StandaloneView');
 		$xliffView->setFormat('xml');
 

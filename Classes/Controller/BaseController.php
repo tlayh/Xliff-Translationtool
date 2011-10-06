@@ -43,6 +43,11 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
      */
     protected $pageId;
 
+	/**
+	 * @var \template
+	 */
+	protected $template;
+
     /**
      * Initializes the controller before invoking an action method.
      *
