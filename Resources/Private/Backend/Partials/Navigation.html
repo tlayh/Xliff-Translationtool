@@ -1,13 +1,19 @@
 <ul class="xliff-navigation">
 
-	<li style="float:left;">
-		<f:link.action action="selectGlobalOrLocalExtensions" arguments="{extensionType:0}">
+	<li>
+		<f:link.action controller="Index" action="selectGlobalOrLocalExtensions" arguments="{extensionType:0}">
 			Translate extension files
 		</f:link.action>
 	</li>
 
-	<li style="float:left;margin-left:10px;">
-		<f:link.action action="help">
+	<li>
+			<f:link.action action="index" controller="Convert">
+				Convert llxml to xliff
+			</f:link.action>
+		</li>
+
+	<li>
+		<f:link.action controller="Index" action="help">
 			Help
 		</f:link.action>
 	</li>

@@ -20,6 +20,11 @@ class Tx_XliffTranslationtool_Domain_Model_Languages extends Tx_Extbase_DomainOb
 	protected $lgNameEn;
 
 	/**
+	 * @var string
+	 */
+	protected $lgIso_2;
+
+	/**
 	 * @param string $lgNameEn
 	 */
 	public function setLgNameEn($lgNameEn) {
@@ -45,6 +50,20 @@ class Tx_XliffTranslationtool_Domain_Model_Languages extends Tx_Extbase_DomainOb
 	 */
 	public function getLgTypo3() {
 		return $this->lgTypo3;
+	}
+
+	/**
+	 * @param string $lgIso2
+	 */
+	public function setLgIso2($lgIso2) {
+		$this->lgIso_2 = $lgIso2;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLgIso2() {
+		return $this->lgIso_2;
 	}
 
 }

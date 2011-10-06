@@ -1,9 +1,36 @@
-/** general styles **/
-
 /** layout **/
 
 div#xliff-translationtool {
 	padding: 5px;
+}
+
+/** general styles **/
+a {
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #00AA00;
+}
+
+/** navigation **/
+div#xliff-translationtool ul.xliff-navigation li {
+	background-color: #C0C0C0;
+	border-radius: 5px 5px 0 0;
+	float: left;
+	margin-left: 10px;
+	padding: 5px;
+	text-align: center;
+	width: 150px;
+}
+
+div#xliff-translationtool ul.xliff-navigation li:hover {
+	background-color: #A0A0A0;
+}
+
+div#xliff-translationtool ul.xliff-navigation li:hover a {
+	color: #ffffff;
 }
 
 /** select boxes, submit button **/
@@ -68,4 +95,11 @@ tbody tr.gray {
 
 tbody tr.lightgray {
 	background-color: #E8E8E8;
+}
+
+/** list style for help section */
+
+div#xliff-translationtool p {
+    margin: 5px;
+    padding: 5px;
 }
