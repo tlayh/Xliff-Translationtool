@@ -264,8 +264,21 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	private function getLanguages() {
-		// @todo get available languages from static_languages (lg_typo3)
-		$languages = $this->languagesRepository->findAll()->toArray();
+
+			// get settings
+		$limitToLanguages = $this->settings['displayLanguages'];
+
+			// check if languages are limited
+		if (empty($limitToLanguages)) {
+			$languages = $this->languagesRepository->findAll()->toArray();
+		} else {
+			$selectedLanguages = explode(',', $limitToLanguages);
+			$languages = $this->languagesRepository->findBySelectedLanguages($selectedLanguages);
+		}
+
+			// check if languages are limited
+
+
 
 		// @todo check if language key is set, there are some entries that have an invalid language key
 
@@ -275,10 +288,11 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	/**
 	 * help action
 	 *
+	 * this empty should just display the content
+	 *
 	 * @return void
 	 */
 	public function helpAction() {
-
 	}
 
 }
