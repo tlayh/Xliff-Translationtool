@@ -1,7 +1,13 @@
-/**
- * Created by JetBrains PhpStorm.
- * User: tommy
- * Date: 14.09.11
- * Time: 22:53
- * To change this template use File | Settings | File Templates.
- */
+/*
+Ext.ns('TYPO3.Xlifftranslationtool');
+
+Ext.onReady(function() {
+
+	alert('ext is ready');
+
+	TYPO3.Xlifftranslationtool.ExtDirect.get({help:'test'}, function(response, options) {
+		alert(response);
+	});
+
+});
+*/

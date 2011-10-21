@@ -132,6 +132,12 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	private function recursiveDirectorySearch($dir, &$files) {
+
+			// check for my templates that are used to create the xliff files later
+		if (strpos($dir, 'xliff_translationtool/Resources/Private/XliffTemplates')) {
+			return $files;
+		}
+
 		if ($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
 				if ($file != "." && $file != "..") {

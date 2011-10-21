@@ -89,10 +89,10 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 		$this->setExtensions($extensionType);
 
-		// get extensions from session
+			// get extensions from session
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
-		// get selected extension from extensions from session
+			// get selected extension from extensions from session
 		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
@@ -162,10 +162,10 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
 		$xliffFileFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_XliffFileFunctions');
 
-		// get extensions from session
+			// get extensions from session
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
-		// get selected extension from extensions from session
+			// get selected extension from extensions from session
 		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
@@ -271,10 +271,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 			$selectedLanguages = explode(',', $limitToLanguages);
 			$languages = $this->languagesRepository->findBySelectedLanguages($selectedLanguages);
 		}
-
-			// check if languages are limited
-
-
 
 		// @todo check if language key is set, there are some entries that have an invalid language key
 

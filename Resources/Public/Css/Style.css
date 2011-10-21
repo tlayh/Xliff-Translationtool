@@ -35,6 +35,14 @@ div#xliff-translationtool ul.xliff-navigation li:hover a {
 
 /** select boxes, submit button **/
 
+div#xliff-translationtool select {
+	width: 240px;
+}
+
+div#xliff-translationtool input[type="submit"] {
+	width: 80px;
+	border-radius: 5px;
+}
 
 /** define translation table **/
 

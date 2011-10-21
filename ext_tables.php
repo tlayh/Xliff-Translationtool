@@ -32,4 +32,16 @@ if (TYPO3_MODE === 'BE') {
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'XLIFF Translation Tool');
 
 
+/**
+ * register extDirect components
+ */
+/*
+t3lib_extMgm::registerExtDirectComponent(
+	'TYPO3.Xlifftranslationtool.ExtDirect',
+	t3lib_extMgm::extPath($_EXTKEY) . 'Classes/ExtDirect/Backend/Connector.php:Tx_XliffTranslationtool_ExtDirect_Backend_Connector',
+	'tools_XliffTranslationtoolTranslation',
+	'user,group'
+);
+*/
+
 ?>

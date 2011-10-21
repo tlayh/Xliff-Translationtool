@@ -31,7 +31,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 
 		// cut the filename from the target
 		$parts = explode('/', $target);
-		array_pop($parts);
+		$filenameTarget = array_pop($parts);
 		$targetPath = implode('/', $parts);
 
 		// if path does not yet exists, create the path recursive
@@ -41,7 +41,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 			}
 		}
 
-		// @todo check for errors here
+		// @todo check for errors here and make a better replacement for target-language
 		$data = file_get_contents($source);
 		$data = str_replace('target-language="en"', 'target-language="' . $languageKey . '"', $data);
 		file_put_contents($target, $data);
@@ -54,7 +54,8 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 			// prepare fileName
 		$fileParts = explode('/', $fileName);
 		$fileNameWithoutPath = array_pop($fileParts);
-		$fileNameWithLanguageKey = $languageKey . '.' . $fileNameWithoutPath;
+
+		$fileNameWithLanguageKey = $languageKey . '.' . $this->removeExistingLanguageKeyFromFileTarget($fileNameWithoutPath);;
 		$tempPath = implode('/', $fileParts);
 
 		$path = $this->l10nPath . $languageKey . '/' . $extensionName . '/' . $tempPath . '/' . $fileNameWithLanguageKey;
@@ -71,6 +72,19 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 			}
 		}
 		return $completePathToFile;
+	}
+
+	/**
+	 * @param string $fileNameWithoutPath
+	 * @return string $fileNameWithoutPathAndLanguageKey
+	 */
+	protected function removeExistingLanguageKeyFromFileTarget($fileNameWithoutPath) {
+		$parts = explode('.', $fileNameWithoutPath);
+		if (count($parts) > 2) {
+			array_shift($parts);
+			$fileNameWithoutPath = implode('.', $parts);
+		}
+		return $fileNameWithoutPath;
 	}
 
 	/**

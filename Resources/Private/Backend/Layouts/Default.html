@@ -1,12 +1,22 @@
-<f:be.container>
+{namespace xliff=Tx_XliffTranslationtool_ViewHelpers}
+
+<f:be.container
+		loadExtJs="true"
+		addCssFile="{f:uri.resource(path:'Css/Style.css')}"
+		addJsFile="{f:uri.resource(path:'Js/Script.js')}"
+		pageTitle="Xliff Translation Tool">
 
 	<div id="xliff-translationtool">
-
-		<link rel="stylesheet" type="text/css" href="/typo3conf/ext/xliff_translationtool/Resources/Public/Css/Style.css" />
 
 		<h1>XLIFF Translation Tool</h1>
 
 		<hr />
+
+		<f:render partial="Navigation" />
+
+		<div id="messages">
+			<f:flashMessages />
+		</div>
 
 		<f:render section="main" />
 
