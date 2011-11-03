@@ -111,3 +111,13 @@ div#xliff-translationtool p {
     margin: 5px;
     padding: 5px;
 }
+
+div#xliff-translationtool div#messages {
+	background-color: #444444;
+    border: 1px solid black;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    font-size: 13px;
+    margin: 15px;
+    padding: 5px;
+}
