@@ -159,14 +159,13 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		$selectedLanguage = $this->request->getArgument('language');
 		$this->view->assign('selectedLanguage', $selectedLanguage);
 
-		/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
+			/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
 		$xliffFileFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_XliffFileFunctions');
 
 			// get extensions from session
 		$extensions = $GLOBALS['BE_USER']->getSessionData('xlifftranslationtool');
 
-			// get selected extension from extensions from session
-		/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
+			/** @var Tx_xliffTranslationtool_Domain_Model_Extension $ext */
 		foreach($extensions as $ext) {
 			if($ext->getExtensionName() == $extensionName) {
 				$extension = $ext;
@@ -176,16 +175,21 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		$this->view->assign('extensionName', $extensionName);
 		$this->view->assign('files', $extension->getFiles());
 
-		$selectedFile = $this->request->getArgument('file');
-		$this->view->assign('selectedFile', $selectedFile);
+		$fileRef = $this->request->getArgument('file');
+		$this->view->assign('selectedFile', $fileRef);
 
 		$availableLanguages = $this->getLanguages();
 		$this->view->assign('languages', $availableLanguages);
 
+
+		$completePathToFile = $xliffFileFunctions->translationFileExists($selectedLanguage, $extensionName, $extensionType, $fileRef);
+
 			// check if a translation already exists, then don't copy the file
-		if($completePathToFile = $xliffFileFunctions->translationFileExists($selectedLanguage, $extensionName, $selectedFile)) {
-			$fileData = $xliffFileFunctions->getFileContents($completePathToFile, $selectedLanguage);
-			$this->view->assign('fileData', $fileData);
+		if ($completePathToFile) {
+
+			$translationData = $xliffFileFunctions->getFileContents($completePathToFile, $selectedLanguage, TRUE);
+
+			$this->view->assign('fileData', $translationData[$selectedLanguage]);
 		}
 	}
 
@@ -202,7 +206,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 		$currentActionName = $this->resolveActionMethodName();
 
 		// only do the recursive search if we just selected the extension type
-		if($currentActionName == 'selectGlobalOrLocalExtensionsAction') {
+		if($currentActionName == 'selectGlobalOrLocalExtensionsAction' || $currentActionName == 'extensionFilesAction') {
 			/** @var $directoryFunctions Tx_xliffTranslationtool_Utility_DirectoryFunctions */
 			$directoryFunctions = $this->objectManager->create('Tx_xliffTranslationtool_Utility_DirectoryFunctions');
 			$extensions = $directoryFunctions->findExtensions(intval($extensionType), $this->settings['hideExtensions']);
@@ -216,7 +220,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	}
 
 	/**
-	 *
+	 * save the translated file
 	 *
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
@@ -225,15 +229,14 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 			// get required arguments
 		$selectedExtension = $this->request->getArgument('selectedValueExtension');
+		$selectedExtensionType = $this->request->getArgument('selectedValueExtensionType');
 		$translationData = $this->request->getArgument('translationData');
 		$language = $this->request->getArgument('selectedLanguage');
 		$file = $this->request->getArgument('selectedFile');
-		$extensionType = $this->request->getArgument('selectedValueExtensionType');
 
-
-		/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
+			/** @var $xliffFileFunctions Tx_XliffTranslationtool_Utility_XliffFileFunctions */
 		$xliffFileFunctions = $this->objectManager->create('Tx_XliffTranslationtool_Utility_XliffFileFunctions');
-		if($xliffFileFunctions->generateXliff($selectedExtension, $language, $file, $translationData, $this->configurationManager)) {
+		if($xliffFileFunctions->generateXliff($selectedExtension, $language, $file, $translationData, $this->configurationManager, $selectedExtensionType)) {
 			$this->flashMessageContainer->add('Translated file saved!!');
 		} else {
 			$this->flashMessageContainer->add('Error saving file!!');
