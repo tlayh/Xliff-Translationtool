@@ -27,6 +27,12 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 		$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
 	}
 
+	/**
+	 * @param string $source
+	 * @param string $target
+	 * @param string $languageKey
+	 * @return boolean
+	 */
 	public function copyFile($source, $target, $languageKey) {
 
 		// cut the filename from the target
@@ -35,21 +41,38 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 		$targetPath = implode('/', $parts);
 
 		// if path does not yet exists, create the path recursive
-		if(!file_exists($targetPath)) {
-			if(!mkdir($targetPath, 0777, TRUE)) {
+		if (!file_exists($targetPath)) {
+			if (!mkdir($targetPath, 0777, TRUE)) {
 				return false;
 			}
 		}
 
+
 		// @todo check for errors here and make a better replacement for target-language
 		$data = file_get_contents($source);
 		$data = str_replace('target-language="en"', 'target-language="' . $languageKey . '"', $data);
-		file_put_contents($target, $data);
 
-		return true;
+		if (file_put_contents($target, $data)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public function translationFileExists($languageKey, $extensionName, $fileName) {
+	/**
+	 * @param string $languageKey
+	 * @param string $extensionName
+	 * @param string $extensionType
+	 * @param string $fileName
+	 * @return bool|string
+	 */
+	public function translationFileExists($languageKey, $extensionName, $extensionType, $fileName) {
+
+		if ($extensionType == 0) {
+			$pathToExtension = $this->pathLocal;
+		} else {
+			$pathToExtension = $this->pathGlobal;
+		}
 
 			// prepare fileName
 		$fileParts = explode('/', $fileName);
@@ -58,14 +81,13 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 		$fileNameWithLanguageKey = $languageKey . '.' . $this->removeExistingLanguageKeyFromFileTarget($fileNameWithoutPath);;
 		$tempPath = implode('/', $fileParts);
 
-		$path = $this->l10nPath . $languageKey . '/' . $extensionName . '/' . $tempPath . '/' . $fileNameWithLanguageKey;
+		$completePathToFile = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/' . $this->l10nPath . $languageKey . '/' . $extensionName . '/' . $tempPath . '/' . $fileNameWithLanguageKey;
 
-		$completePathToFile = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/' . $path;
-
-		if(!file_exists($completePathToFile)) {
-			$source = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/' . $this->pathGlobal . '' . $extensionName . '/' . $tempPath . '/' . $fileNameWithoutPath;
+		if (!file_exists($completePathToFile)) {
+			$source = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/' . $pathToExtension . '' . $extensionName . '/' . $tempPath . '/' . $fileNameWithoutPath;
 			$target = $completePathToFile;
-			if($this->copyFile($source, $target, $languageKey)) {
+
+			if ($this->copyFile($source, $target, $languageKey)) {
 				return $completePathToFile;
 			} else {
 				return FALSE;
@@ -90,14 +112,15 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	/**
 	 * set complete path to file and use xliff parser to get the data as array
 	 *
-	 * @param string $completePathToFile
+	 * @param string $fileRef
+	 * @param string $languageKey
 	 * @return array
 	 */
-	public function getFileContents($completePathToFile) {
+	public function getFileContents($fileRef, $languageKey = 'default') {
 
 		/** @var $xliffParser t3lib_l10n_parser_Xliff */
 		$xliffParser = t3lib_div::makeInstance('t3lib_l10n_parser_Xliff');
-		$data = $xliffParser->getParsedData($completePathToFile, 'default');
+		$data = $xliffParser->getParsedData($fileRef, $languageKey);
 
 		return $data;
 	}
@@ -117,9 +140,10 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	 * @param string $file
 	 * @param $configurationManager
 	 * @param array $translationData
+	 * @param string $extensionType
 	 * @return int
 	 */
-	public function generateXliff($selectedExtension, $language, $file, $translationData, $configurationManager) {
+	public function generateXliff($selectedExtension, $language, $file, $translationData, $configurationManager, $extensionType) {
 
 			// get xliff view header
 		$xliffViewHeader = $this->getXliffRenderer($configurationManager, 'Header');
@@ -144,7 +168,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 
 		$content = $contentHead . $contentTranslations . $contentFooter;
 
-		$completePathToFile = $this->translationFileExists($language, $selectedExtension, $file);
+		$completePathToFile = $this->translationFileExists($language, $selectedExtension, $extensionType, $file);
 
 		return $this->setFileContents($content, $completePathToFile);
 	}

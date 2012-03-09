@@ -62,6 +62,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 
 
 	private function setRootPath($extensionType, $extensionName='') {
+
 		if ($extensionType == 0) {
 			$this->rootPath = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/typo3conf/ext';
 		} elseif ($extensionType == 1) {
