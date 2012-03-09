@@ -19,8 +19,14 @@ Hide extensions that you don't want to show up in the list (constants)::
 
 	module.tx_xlifftranslationtool.settings.hideExtensions = cms, css_styled_content, viewpage
 
+Show only some languages::
+
+	module.tx_xlifftranslationtool.settings.displayLanguages = de, en, gb, us, fr
+
 Changelog:
 --------------------
+
+09.03.2012 - fixed some bugs
 
 17.09.2011 - added manual.sxw with first infos
 
