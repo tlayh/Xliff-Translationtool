@@ -50,7 +50,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * Display the start page
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function indexAction() {
 		$this->setOptions();
@@ -60,7 +59,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * Check here what to do, display local extensions with xliff or global extensions with xliff
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function selectGlobalOrLocalExtensionsAction() {
 		$this->setOptions();
@@ -76,7 +74,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * get the selected extension and display the available files
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function extensionFilesAction() {
 		$this->setOptions();
@@ -107,7 +104,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 	/**
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function fileSelectionAction() {
 		$this->setOptions();
@@ -143,7 +139,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 	/**
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function languageSelectionAction() {
 		$this->setOptions();
@@ -198,7 +193,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 *
 	 * @param string $extensionType
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	private function setExtensions($extensionType) {
 
@@ -223,7 +217,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * save the translated file
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function saveTranslationAction() {
 
@@ -260,7 +253,6 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	/**
 	 * getLanguages
 	 * @return array
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	private function getLanguages() {
 
