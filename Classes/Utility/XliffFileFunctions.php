@@ -119,8 +119,10 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	public function getFileContents($fileRef, $languageKey = 'default') {
 
 		/** @var $xliffParser t3lib_l10n_parser_Xliff */
-		$xliffParser = t3lib_div::makeInstance('t3lib_l10n_parser_Xliff');
-		$data = $xliffParser->getParsedData($fileRef, $languageKey);
+		//$xliffParser = t3lib_div::makeInstance('t3lib_l10n_parser_Xliff');
+		//$data = $xliffParser->getParsedData($fileRef, $languageKey);
+
+		$data = $this->getXliffData($fileRef);
 
 		return $data;
 	}
@@ -193,6 +195,19 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 		$xliffView->setTemplatePathAndFilename($templatePathAndFilename);
 		$xliffView->assign('settings', $this->settings);
 		return $xliffView;
+	}
+
+	private function getXliffData($fileRef) {
+
+		if (file_exists($fileRef)) {
+			$fileData = file_get_contents($fileRef);
+			$arrayData = t3lib_div::xml2array($fileData);
+			t3lib_utility_Debug::debug($arrayData['file']['body']);
+			die('file exists');
+		}
+
+		die('where is my file');
+
 	}
 
 }
