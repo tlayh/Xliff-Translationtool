@@ -35,11 +35,11 @@
 							{transKey}
 						</td>
 						<td class="translation-source">
-							<f:form.hidden name="translationData[{transKey}][source]" value="{transData.0.source}" />
-							{transData.0.source}
+							<f:form.hidden name="translationData[{transKey}][source]" value="{transData.source}" />
+							{transData.source}
 						</td>
 						<td class="translation-target">
-							<f:form.textfield name="translationData[{transKey}][target]" value="{transData.0.target}" />
+							<f:form.textfield name="translationData[{transKey}][target]" value="{transData.target}" />
 						</td>
 					</tr>
 					</f:cycle>

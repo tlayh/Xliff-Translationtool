@@ -197,16 +197,40 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 		return $xliffView;
 	}
 
+	/**
+	 * convert the file to an array to display
+	 *
+	 * @param string $fileRef
+	 * @return array
+	 */
 	private function getXliffData($fileRef) {
 
 		if (file_exists($fileRef)) {
 			$fileData = file_get_contents($fileRef);
-			$arrayData = t3lib_div::xml2array($fileData);
-			t3lib_utility_Debug::debug($arrayData['file']['body']);
-			die('file exists');
+			$simpleXml = new SimpleXMLElement($fileData);
+
+				// get children
+			$translationUnits = $simpleXml->file->body->children();
+
+			$translationArray = array();
+
+			if ($translationUnits) {
+				foreach ($translationUnits as $transUnit) {
+					$key =  $transUnit->attributes()->id;
+
+					$sourceValue = $transUnit->source;
+					$translationArray[(string)$key]['source'] = (string)$sourceValue;
+
+					$targetValue = (string)$transUnit->target;
+					if ($targetValue == "") {
+						$targetValue = $sourceValue;
+					}
+					$translationArray[(string)$key]['target'] = (string)$targetValue;
+				}
+			}
 		}
 
-		die('where is my file');
+		return $translationArray;
 
 	}
 
