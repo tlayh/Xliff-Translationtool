@@ -18,6 +18,7 @@ if (TYPO3_MODE === 'BE') {
 		array(
 			'Index'   => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation,help',
 			'Convert' => 'index',
+			'Admin'   => 'index',
 		),
 		array(
 			'access' => 'user,group',

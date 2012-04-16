@@ -48,17 +48,21 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
 	 */
 	protected $template;
 
-    /**
-     * Initializes the controller before invoking an action method.
-     *
-     * @return void
-     */
-    protected function initializeAction() {
-        // @todo Evaluate how the intval() call can be used with Extbase validators/filters
-        $this->pageId = intval(t3lib_div::_GP('id'));
+	/**
+	 * Initializes the controller before invoking an action method.
+	 *
+	 * @return void
+	 */
+	protected function initializeAction() {
+		// @todo Evaluate how the intval() call can be used with Extbase validators/filters
+		$this->pageId = intval(t3lib_div::_GP('id'));
 
-        $this->pageRenderer->addInlineLanguageLabelFile('EXT:xliff_translationtool/Resources/Private/Language/locallang.xml');
-    }
+		$this->pageRenderer->addInlineLanguageLabelFile('EXT:xliff_translationtool/Resources/Private/Language/locallang.xml');
+	}
+
+	public function initializeView() {
+		$this->view->assign('isAdmin', $GLOBALS['BE_USER']->isAdmin());
+	}
 
 	/**
 	 * Processes a general request. The result can be returned by altering the given response.

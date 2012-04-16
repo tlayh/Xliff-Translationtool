@@ -10,6 +10,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	array(
 		'Index'   => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation,help',
 		'Convert' => 'index',
+		'Admin'   => 'index',
 	),
 	// non-cacheable actions
 	array(
