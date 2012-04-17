@@ -52,6 +52,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * @return void
 	 */
 	public function indexAction() {
+		$this->redirect('selectGlobalOrLocalExtensions', NULL, NULL, array('extensionType' => 0));
 		$this->setOptions();
 	}
 
