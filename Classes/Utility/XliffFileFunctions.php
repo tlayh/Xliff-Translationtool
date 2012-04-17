@@ -1,7 +1,7 @@
 <?php
 /**
  * FileFunctions
- * @author Thomas Layh <develop@layh.com>
+ * @author Thomas Layh <thomas@layh.com>
  */
 
 /**

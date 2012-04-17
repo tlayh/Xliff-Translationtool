@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Thomas Layh <develop@layh.com>, layh.com
+ *  (c) 2011 Thomas Layh <thomas@layh.com>, layh.com
  *
  *  All rights reserved
  *

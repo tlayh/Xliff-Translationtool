@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Thomas Layh <develop@layh.com>, layh.com
+ *  (c) 2011 Thomas Layh <thomas@layh.com>, layh.com
  *
  *  All rights reserved
  *
@@ -242,7 +242,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	 * set selectbox for the view
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
+	 * @author Thomas Layh <thomas@layh.com>
 	 */
 	private function setOptions() {
 		$options = array(0 => 'Local extensions (typo3conf/ext)', 1 => 'Global extensions (typo3/sysext)');

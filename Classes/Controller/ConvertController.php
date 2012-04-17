@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Thomas Layh <develop@layh.com>, layh.com
+ *  (c) 2011 Thomas Layh <thomas@layh.com>, layh.com
  *
  *  All rights reserved
  *
@@ -25,7 +25,7 @@
 
 /**
  * ConvertController
- * @author Thomas Layh <develop@layh.com>
+ * @author Thomas Layh <thomas@layh.com>
  */
 class Tx_XliffTranslationtool_Controller_ConvertController extends Tx_XliffTranslationtool_Controller_BaseController {
 
@@ -33,7 +33,7 @@ class Tx_XliffTranslationtool_Controller_ConvertController extends Tx_XliffTrans
 	 * Display the start page
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
+	 * @author Thomas Layh <thomas@layh.com>
 	 */
 	public function indexAction() {
 

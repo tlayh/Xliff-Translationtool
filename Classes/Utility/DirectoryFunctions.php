@@ -1,7 +1,7 @@
 <?php
 /**
  * DirectoryFunctions
- * @author Thomas Layh <develop@layh.com>
+ * @author Thomas Layh <thomas@layh.com>
  */
 
 /**
@@ -33,7 +33,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	 * @param integer $extensionType
 	 * @param string $hiddenExtensions
 	 * @return array
-	 * @author Thomas Layh <develop@layh.com>
+	 * @author Thomas Layh <thomas@layh.com>
 	 */
 	public function findExtensions($extensionType, $hiddenExtensions) {
 		$this->setRootPath($extensionType);
@@ -130,7 +130,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	 * @param string $dir
 	 * @param array $files
 	 * @return array
-	 * @author Thomas Layh <develop@layh.com>
+	 * @author Thomas Layh <thomas@layh.com>
 	 */
 	private function recursiveDirectorySearch($dir, &$files) {
 

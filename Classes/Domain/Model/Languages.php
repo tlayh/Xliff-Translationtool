@@ -5,7 +5,7 @@
  * Model for Languages
  * @scope prototype
  * @entity
- * @author Thomas Layh <develop@layh.com>
+ * @author Thomas Layh <thomas@layh.com>
  */
 class Tx_XliffTranslationtool_Domain_Model_Languages extends Tx_Extbase_DomainObject_AbstractEntity {
 
