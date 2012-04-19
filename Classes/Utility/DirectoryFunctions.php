@@ -61,7 +61,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 	}
 
 
-	private function setRootPath($extensionType, $extensionName='') {
+	protected function setRootPath($extensionType, $extensionName='') {
 
 		if ($extensionType == 0) {
 			$this->rootPath = t3lib_div::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/typo3conf/ext';
@@ -74,7 +74,7 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 		}
 	}
 
-	private function cleanUpResultArray($files) {
+	protected function cleanUpResultArray($files) {
 		$cleanResult = new ArrayObject();
 
 		/** @var $extension Tx_xliffTranslationtool_Domain_Model_Extension */
@@ -157,5 +157,12 @@ class Tx_XliffTranslationtool_Utility_DirectoryFunctions {
 		}
 
 		return $files;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRootPath() {
+		return $this->rootPath;
 	}
 }
