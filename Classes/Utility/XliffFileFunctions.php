@@ -117,13 +117,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	 * @return array
 	 */
 	public function getFileContents($fileRef, $languageKey = 'default') {
-
-		/** @var $xliffParser t3lib_l10n_parser_Xliff */
-		//$xliffParser = t3lib_div::makeInstance('t3lib_l10n_parser_Xliff');
-		//$data = $xliffParser->getParsedData($fileRef, $languageKey);
-
 		$data = $this->getXliffData($fileRef);
-
 		return $data;
 	}
 
