@@ -182,7 +182,7 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 
 			// check if a translation already exists, then don't copy the file
 		if ($completePathToFile) {
-			$translationData = $xliffFileFunctions->getFileContents($completePathToFile, $selectedLanguage, TRUE);
+			$translationData = $xliffFileFunctions->getFileContents($completePathToFile);
 			$this->view->assign('fileData', $translationData);
 		}
 	}

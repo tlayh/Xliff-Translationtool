@@ -113,10 +113,9 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 	 * set complete path to file and use xliff parser to get the data as array
 	 *
 	 * @param string $fileRef
-	 * @param string $languageKey
 	 * @return array
 	 */
-	public function getFileContents($fileRef, $languageKey = 'default') {
+	public function getFileContents($fileRef) {
 		$data = $this->getXliffData($fileRef);
 		return $data;
 	}
@@ -209,7 +208,7 @@ class Tx_XliffTranslationtool_Utility_XliffFileFunctions {
 			$translationArray = array();
 
 			if ($translationUnits) {
-				foreach ($translationUnits as $transUnit) {
+				foreach ($translationUnits as $transUnit) { /** @var $transUnit SimpleXMLElement  */
 					$key =  $transUnit->attributes()->id;
 
 					$sourceValue = $transUnit->source;
