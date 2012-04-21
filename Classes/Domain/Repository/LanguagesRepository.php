@@ -51,5 +51,3 @@ class Tx_XliffTranslationtool_Domain_Repository_LanguagesRepository extends Tx_E
 	}
 
 }
-
-?>

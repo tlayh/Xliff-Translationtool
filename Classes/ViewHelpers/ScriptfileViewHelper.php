@@ -49,5 +49,3 @@ class Tx_XliffTranslationtool_ViewHelpers_ScriptfileViewHelper extends Tx_Fluid_
 		$pagerender->addJsFile($resourcePath . $content, 'text/javascript', $compress, $forceOnTop);
 	}
 }
-
-?>

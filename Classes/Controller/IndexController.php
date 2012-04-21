@@ -282,5 +282,3 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 	}
 
 }
-
-?>

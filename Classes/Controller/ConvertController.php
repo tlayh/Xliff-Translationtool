@@ -40,5 +40,3 @@ class Tx_XliffTranslationtool_Controller_ConvertController extends Tx_XliffTrans
 	}
 
 }
-
-?>

@@ -88,5 +88,3 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
 	}
 
 }
-
-?>
