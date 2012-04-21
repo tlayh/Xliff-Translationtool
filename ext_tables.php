@@ -12,8 +12,8 @@ if (TYPO3_MODE === 'BE') {
 	 */
 	Tx_Extbase_Utility_Extension::registerModule(
 		$_EXTKEY,
-		'tools',	 // Make module a submodule of 'tools'
-		'translation',	// Submodule key
+		'Xliff',	 // Make module a submodule of 'tools'
+		'',	// Submodule key
 		'',						// Position
 		array(
 			'Index'   => 'index,selectGlobalOrLocalExtensions,extensionFiles,fileSelection,languageSelection,saveTranslation,help',
