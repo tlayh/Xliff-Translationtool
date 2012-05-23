@@ -33,15 +33,15 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
 	 */
 	protected $extensionName = 'XliffTranslationtool';
 
-    /**
-     * @var t3lib_PageRenderer
-     */
-    protected $pageRenderer;
+	/**
+	 * @var t3lib_PageRenderer
+	 */
+	protected $pageRenderer;
 
-    /**
-     * @var integer
-     */
-    protected $pageId;
+	/**
+	 * @var integer
+	 */
+	protected $pageId;
 
 	/**
 	 * @var \template
@@ -54,7 +54,8 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	protected function initializeAction() {
-		// @todo Evaluate how the intval() call can be used with Extbase validators/filters
+			// @todo Evaluate how the intval()
+			// call can be used with Extbase validators/filters
 		$this->pageId = intval(t3lib_div::_GP('id'));
 
 		$this->pageRenderer->addInlineLanguageLabelFile('EXT:xliff_translationtool/Resources/Private/Language/locallang.xml');
@@ -65,7 +66,7 @@ class Tx_XliffTranslationtool_Controller_BaseController extends Tx_Extbase_MVC_C
 	}
 
 	/**
-	 * Processes a general request. The result can be returned by altering the given response.
+	 * Processes a request. The result can be returned by altering the given response
 	 *
 	 * @param Tx_Extbase_MVC_RequestInterface $request The request object
 	 * @param Tx_Extbase_MVC_ResponseInterface $response The response, modified by this handler
