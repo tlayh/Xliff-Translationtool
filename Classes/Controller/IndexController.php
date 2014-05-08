@@ -263,6 +263,9 @@ class Tx_XliffTranslationtool_Controller_IndexController extends Tx_XliffTransla
 			$languages = $this->languagesRepository->findAll()->toArray();
 		} else {
 			$selectedLanguages = explode(',', $limitToLanguages);
+			foreach($selectedLanguages as &$selectedLanguage){
+				$selectedLanguage = trim($selectedLanguage);
+			}
 			$languages = $this->languagesRepository->findBySelectedLanguages($selectedLanguages);
 		}
 
