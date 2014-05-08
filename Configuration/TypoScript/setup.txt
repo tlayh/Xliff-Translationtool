@@ -26,6 +26,13 @@ module.tx_xlifftranslationtool {
 				mapping {
 					tableName = static_languages
 					recordType = Tx_XliffTranslationtool_Domain_Model_Languages
+					columns {
+						uid.mapOnProperty = uid
+						pid.mapOnProperty = pid
+						lg_name_en.mapOnProperty = lgNameEn
+						lg_typo3.mapOnProperty = lgTypo3
+						lg_iso_2.mapOnProperty = lgIso_2
+					}
 				}
 			}
 		}
