@@ -2,7 +2,7 @@
 
 <section id="extension-selection">
 	<f:form action="extensionFiles" controller="Index" name="extensionSelection">
-		<f:form.select name="extension" value="{selectedValueExtension}" options="{extensions}" optionValueField="extensionName" optionLabelField="labelField" />
+		<f:form.select name="extension" value="{selectedValueExtension}" options="{extensions}" optionValueField="extensionName" optionLabelField="labelField" sortByOptionLabel="TRUE" />
 		<f:form.hidden name="extensionType" value="{selectedValueExtensionType}" />
 		<f:form.submit value="Submit"/>
 	</f:form>
