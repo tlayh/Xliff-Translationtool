@@ -34,7 +34,7 @@
 class Tx_XliffTranslationtool_Domain_Repository_LanguagesRepository extends Tx_Extbase_Persistence_Repository {
 
 	protected $defaultOrderings = array(
-		'lg_name_en' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+		'uid' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
 	);
 
 	/**
@@ -46,7 +46,7 @@ class Tx_XliffTranslationtool_Domain_Repository_LanguagesRepository extends Tx_E
 	public function findBySelectedLanguages($selectedLanguages) {
 		$query = $this->createQuery();
 		return $query->matching(
-			$query->in('lg_iso_2', $selectedLanguages, FALSE)
+			$query->in('flag', $selectedLanguages, FALSE)
 		)->execute();
 	}
 
