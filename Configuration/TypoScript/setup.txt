@@ -24,14 +24,14 @@ module.tx_xlifftranslationtool {
 		classes {
 			Tx_XliffTranslationtool_Domain_Model_Languages {
 				mapping {
-					tableName = static_languages
+					tableName = sys_language
 					recordType = Tx_XliffTranslationtool_Domain_Model_Languages
 					columns {
 						uid.mapOnProperty = uid
 						pid.mapOnProperty = pid
-						lg_name_en.mapOnProperty = lgNameEn
-						lg_typo3.mapOnProperty = lgTypo3
-						lg_iso_2.mapOnProperty = lgIso_2
+						title.mapOnProperty = lgNameEn
+						uid.mapOnProperty = lgTypo3
+						flag.mapOnProperty = lgIso_2
 					}
 				}
 			}
